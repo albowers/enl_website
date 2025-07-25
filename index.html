@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EEG Neurofeedback Lab – Andrew Bowers, Ph.D., CCC-SLP</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional styles for the new layout */
+    .banner-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .banner-graphic {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    .banner-graphic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .lab-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      padding: 1rem 0;
+      background-color: var(--bg-light);
+      margin: 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .welcome-section {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      align-items: flex-start;
+      margin: 2rem 0 0 0; /* Reduced bottom margin */
+    }
+    .welcome-content {
+      flex: 2;
+    }
+    .welcome-sidebar {
+      flex: 1;
+      text-align: center;
+    }
+    .profile-image img {
+      width: 180px;
+      height: 240px;
+      object-fit: cover;
+      border: 3px solid var(--secondary-color);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    .social-icons-welcome {
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .social-icons-welcome a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .social-icons-welcome a:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    /* Reduce space between sections */
+    main section {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    
+    /* Specifically target the Projects section to reduce space above it */
+    .projects-section {
+      padding-top: 0;
+      margin-top: 0;
+    }
+    
+    /* Reduce spacing around headings */
+    h2 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .welcome-section {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      .welcome-sidebar {
+        margin-bottom: 1.5rem;
+      }
+      .lab-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner at the top -->
+  <div class="banner-container">
+    <div class="banner-graphic">
+      <img src="all_eeg_ersp.jpg" alt="EEG Neurofeedback Lab Banner">
+    </div>
+   <h2 class="lab-title"><img src="enl.png" alt="" class="title-icon">EEG Neurofeedback Laboratory</h2>
+  </div>
+  
+  <nav>
+  <div class="container">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="links.html">Links</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+  
+  <main>
+    <section>
+      <div class="container">
+        <!-- Welcome Section with sidebar profile -->
+        <div class="welcome-section">
+          <div class="welcome-content">
+            <h2>Welcome to the EEG Neurofeedback Laboratory</h2>
+            <p>
+              The long term aim of the EEG Neurofeedback Lab is to develop the basic knowledge about electroencephlagraphy (EEG) needed to develop novel brain-computer interface approaches to augment assessment and intervention in stuttering. In cooperation with other labs working on similar goals, we've been focused on describing basic differences in EEG signals in various speech perception, production, and working memory tasks primarily in adults who stutter. The lab makes use of EEG equipment along with analysis of electromyogrpahic (EMG) and autonomic signals toward the long term aims. While lab goals are focused on stuttering, our work intersects with basic research in many other areas including motor control, language, working memory, and interoception.
+            </p>
+            <p>
+              The lab is led by Dr. Andrew Bowers, Associate Professor at the University of Arkansas and is one of a group of collaborating EEG labs.Other labs,students, and collaborations are highlighted on the blog page. 
+            </p>
+          </div>
+          
+          <div class="welcome-sidebar">
+            <div class="profile-image">
+              <img src="Converted File.jpg" alt="Andrew's Profile Photo">
+            </div>
+            <h3>Andrew Bowers, Ph.D., CCC-SLP</h3>
+            <p>Associate Professor<br>University of Arkansas</p>
+            <div class="social-icons-welcome">
+              <a href="https://scholar.google.com/citations?user=O1ppuAUAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+              <a href="https://www.linkedin.com/in/andrew-bowers-09b8ab366/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/albowers" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://x.com/AndrewBowe20526" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+              <a href="mailto:albowers@uark.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Overview Section -->
+    <section class="projects-section">
+      <div class="container">
+        <h2>Current Projects</h2>
+        <div class="research-grid">
+          <div class="research-item">
+            <img src="group_quartiles_pc2.png" alt="Beta Burst Dynamics Project">
+            <h3>Beta Burst Dynamics in Speech Motor Control and stuttering</h3>
+            <p>Exploring transient oscillatory activity in the beta band for understanding and treating stuttering.</p>
+            <a href="projects.html#beta-burst" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="research-item">
+            <img src="correlation_PWM.jpg" alt="Neurofeedback for Stuttering">
+            <h3>Phonological working memory in developmental stuttering</h3>
+            <p>Working toward an understanding of how differences in speech sensorimotor integration are related to phonological working memory in developmental stuttering</p>
+            <a href="projects.html#neurofeedback" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          
+          <div class="research-item">
+            <img src="alpha_gamma_delta_beta.png" alt="EEG-BCI Toolbox">
+            <h3>Event-related phase-amplitude coupling in speech motor control and stuttering</h3>
+            <p>Analysis of coupling between low frequency phase and higher frequency power to uncover how timing in speech production is nested in various production tasks .</p>
+            <a href="projects.html#eeg-bci" class="read-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="projects.html" class="btn primary">View All Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Publications Section -->
+    <section>
+      <div class="container">
+        <h2>Recent Publications</h2>
+        <div class="publications-container">
+          <div class="pub-content">
+            <p class="authors"><strong>Brown, E.</strong>, <strong>Bowers, A.</strong>, Casenheiser, D., Harkrider, A., Reily, K., & Saltuklaroglu, T. (2024).</p>
+            <p class="title">Influences of speaking task demands on sensorimotor oscillations in adults who stutter: Implications for speech motor control.</p>
+            <p class="journal">
+              <em>Clinical Neurophysiology</em>, 169, 76-78. 
+              <a href="https://doi.org/10.1016/j.clinph.2024.09.016" target="_blank">
+                https://doi.org/10.1016/j.clinph.2024.09.016
+              </a>
+            </p>
+            <div class="pub-links">
+              <a href="https://doi.org/10.1016/j.clinph.2024.09.016" class="btn small" target="_blank">DOI</a>
+            </div>
+          </div>
+          <div class="pub-content">
+            <p class="authors"><strong>Bowers, A.</strong>, & Hudock, D. (2024).</p>
+            <p class="title">Reduced resting-state periodic beta power in adults who stutter is related to sensorimotor control of speech execution.</p>
+            <p class="journal">
+              <em>Cortex</em>, 181, 74-92. 
+              <a href="https://doi.org/10.1016/j.cortex.2024.09.016" target="_blank">
+                https://doi.org/10.1016/j.cortex.2024.09.016
+              </a>
+            </p>
+            <div class="pub-links">
+              <a href="https://doi.org/10.1016/j.cortex.2024.09.016" class="btn small" target="_blank">DOI</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="publications.html" class="btn primary">View All Publications</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section>
+      <div class="container">
+        <h2>News & Events</h2>
+        <ul class="events-list">
+          <li>
+            <div class="event-date">
+              <span>23-26</span>
+              Sept
+            </div>
+            <div class="event-details">
+              <h3>Oxford Stuttering and Sluttering Conference</h3>
+              <p>We'll be presenting some data on ERSPs and event-related mutual information measures of alpha-beta phase amplitude coupling in adults who stutter</p>
+              <p class="event-location"><i class="fas fa-map-marker-alt"></i> Oxford, UK</p>
+            </div>
+          </li>
+          <li>
+            <div class="event-date">
+              <span>20-22</span>
+              Nov
+            </div>
+            <div class="event-details">
+              <h3>American Speech-Langauge and Hearing Association Conference</h3>
+              <p>Leslie Williams, a master's speech-pathology student working in ENL is presenting some qualitative data and talking about the development of a interoceptive awareness questionairre in stuttering</p>
+              <p class="event-location"><i class="fas fa-map-marker-alt"></i>Washington, DC</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><i class="fas fa-envelope"></i> albowers@uark.edu</p>
+          <p><i class="fas fa-map-marker-alt"></i> Department of Communication Disorders and Occupational Therapy<br>University of Arkansas<br>Fayetteville, AR, 72701</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="cv.html">CV</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-icons">
+            <a href="https://scholar.google.com/citations?user=O1ppuAUAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://www.linkedin.com/in/andrew-bowers-09b8ab366/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/albowers" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/AndrewBowe20526" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="mailto:albowers@uark.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2024 Andrew Bowers. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

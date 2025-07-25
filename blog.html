@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About - EEG Neurofeedback Lab – Andrew Bowers, Ph.D.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+   
+    .lab-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      padding: 1rem 0;
+      background-color: var(--bg-light);
+      margin: 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .blog-container {
+      display: grid;
+      grid-template-columns: 7fr 3fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .blog-main {
+      flex: 1;
+    }
+    .blog-post {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+    .blog-post-header {
+      padding: 1.5rem 2rem 1rem;
+    }
+    .blog-post-header h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.8rem;
+    }
+    .blog-post-header a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .blog-post-header a:hover {
+      color: var(--secondary-color);
+    }
+    .blog-post-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .blog-post-meta img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .blog-post-meta span {
+      margin-right: 1rem;
+    }
+    .blog-post-meta i {
+      margin-right: 0.3rem;
+    }
+    .blog-post-featured-image {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+    .blog-post-content {
+      padding: 1.5rem 2rem 2rem;
+      line-height: 1.8;
+    }
+    .blog-post-content p {
+      margin-bottom: 1.2rem;
+    }
+    .blog-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0 2rem 1.5rem;
+    }
+    .blog-post-tags a {
+      display: inline-block;
+      background-color: #f0f5fa;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .blog-post-tags a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .blog-post-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem 1.5rem;
+      border-top: 1px solid #f0f0f0;
+    }
+    .blog-post-actions .social-share {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .blog-post-actions .social-share a {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    .blog-post-actions .social-share a:hover {
+      color: var(--secondary-color);
+    }
+    .read-more-link {
+      color: var(--secondary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .read-more-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar Styles */
+    .blog-sidebar {
+      flex: 0 0 300px;
+    }
+    .sidebar-widget {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar-widget h3 {
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1.3rem;
+    }
+    .sidebar-widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-widget ul li {
+      margin-bottom: 0.8rem;
+    }
+    .sidebar-widget ul li:last-child {
+      margin-bottom: 0;
+    }
+    .sidebar-widget ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    .sidebar-widget ul li a:hover {
+      color: var(--secondary-color);
+    }
+    .sidebar-widget .category-count {
+      background-color: var(--bg-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-left: 0.5rem;
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag-cloud a {
+      display: inline-block;
+      background-color: #f0f5fa;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .tag-cloud a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .recent-post {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .recent-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .recent-post-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    .recent-post-info h4 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .recent-post-info h4 a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .recent-post-info h4 a:hover {
+      color: var(--secondary-color);
+    }
+    .recent-post-date {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .pagination a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin: 0 0.3rem;
+      border-radius: 5px;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .pagination a:hover {
+      background-color: var(--bg-light);
+    }
+    .pagination a.active {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .pagination a.prev, .pagination a.next {
+      width: auto;
+      padding: 0 1rem;
+    }
+
+    /* Search Form */
+    .search-form {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .search-form input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-light);
+      font-family: var(--font-sans);
+    }
+    .search-form button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+    .search-form button:hover {
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 900px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+      .blog-post-featured-image {
+        height: 250px;
+      }
+      .lab-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="links.html">Links</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main>
+    <div class="blog-container">
+      <div class="blog-main">
+        <h2>Lab News & Insights</h2>
+        
+        <!-- Blog Post 1 -->
+        <article class="blog-post">
+          <header class="blog-post-header">
+            <h3><a href="blog-post1.html">Neurofeedback for Stuttering: Current Progress and Future Directions</a></h3>
+            <div class="blog-post-meta">
+              <img src="Converted File.jpg" alt="Andrew Bowers">
+              <span><i class="fas fa-user"></i> Andrew Bowers</span>
+              <span><i class="fas fa-calendar"></i> May 19, 2025</span>
+              <span><i class="fas fa-comments"></i> 5 Comments</span>
+              <span><i class="fas fa-folder"></i> Research Updates</span>
+            </div>
+          </header>
+          
+          <img src="neurofeedback-post.jpg" alt="Neurofeedback Session" class="blog-post-featured-image">
+          
+          <div class="blog-post-content">
+            <p>
+              Our lab has been making significant strides in the development and testing of neurofeedback protocols for 
+              developmental stuttering. In this post, I'd like to share some of our recent progress and discuss where we 
+              see this research heading in the next few years.
+            </p>
+            <p>
+              The premise of neurofeedback for stuttering is to give individuals real-time feedback about their brain activity, 
+              specifically sensorimotor beta oscillations (15-30 Hz) that have been implicated in speech motor control. By 
+              visualizing these oscillations and providing rewards for specific patterns, participants can learn to voluntarily 
+              modulate their brain activity in ways that may support more fluent speech production.
+            </p>
+            <a href="blog-post1.html" class="read-more-link">Continue Reading →</a>
+          </div>
+          
+          <div class="blog-post-tags">
+            <a href="#">#neurofeedback</a>
+            <a href="#">#stuttering</a>
+            <a href="#">#clinical-research</a>
+            <a href="#">#eeg</a>
+          </div>
+          
+          <div class="blog-post-actions">
+            <div class="social-share">
+              <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Blog Post 2 -->
+        <article class="blog-post">
+          <header class="blog-post-header">
+            <h3><a href="blog-post2.html">Beta Burst Analysis: A New Approach to Understanding Speech Motor Control</a></h3>
+            <div class="blog-post-meta">
+              <img src="Converted File.jpg" alt="Andrew Bowers">
+              <span><i class="fas fa-user"></i> Andrew Bowers</span>
+              <span><i class="fas fa-calendar"></i> April 28, 2025</span>
+              <span><i class="fas fa-comments"></i> 8 Comments</span>
+              <span><i class="fas fa-folder"></i> Research Methods</span>
+            </div>
+          </header>
+          
+          <img src="beta-burst-post.jpg" alt="EEG Beta Burst Visualization" class="blog-post-featured-image">
+          
+          <div class="blog-post-content">
+            <p>
+              Traditional approaches to EEG analysis often focus on sustained oscillatory activity averaged over time. However, 
+              recent research has highlighted the importance of transient oscillatory events, particularly in the beta frequency 
+              band. These short-lived "bursts" of activity may provide crucial insights into the dynamic nature of speech motor 
+              control.
+            </p>
+            <p>
+              In our lab, we've been developing new methods for detecting and characterizing beta bursts in EEG recordings 
+              during speech production tasks. These methods allow us to examine not just the average power in a frequency band, 
+              but the specific timing, amplitude, and duration of individual burst events.
+            </p>
+            <a href="blog-post2.html" class="read-more-link">Continue Reading →</a>
+          </div>
+          
+          <div class="blog-post-tags">
+            <a href="#">#beta-bursts</a>
+            <a href="#">#eeg-methods</a>
+            <a href="#">#speech-motor-control</a>
+            <a href="#">#oscillations</a>
+          </div>
+          
+          <div class="blog-post-actions">
+            <div class="social-share">
+              <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Blog Post 3 -->
+        <article class="blog-post">
+          <header class="blog-post-header">
+            <h3><a href="blog-post3.html">Conference Recap: International Conference on Neurofeedback 2025</a></h3>
+            <div class="blog-post-meta">
+              <img src="Converted File.jpg" alt="Andrew Bowers">
+              <span><i class="fas fa-user"></i> Andrew Bowers</span>
+              <span><i class="fas fa-calendar"></i> April 15, 2025</span>
+              <span><i class="fas fa-comments"></i> 3 Comments</span>
+              <span><i class="fas fa-folder"></i> Conferences</span>
+            </div>
+          </header>
+          
+          <img src="conference-post.jpg" alt="Conference Presentation" class="blog-post-featured-image">
+          
+          <div class="blog-post-content">
+            <p>
+              Last month, our lab had the opportunity to present our latest findings at the International Conference on 
+              Neurofeedback in Berlin. This gathering of researchers, clinicians, and technologists provided valuable insights 
+              into the current state of the field and emerging trends in neurofeedback applications.
+            </p>
+            <p>
+              Our presentation on "Beta Burst Dynamics in Developmental Stuttering" generated significant interest and 
+              discussion. We shared preliminary results from our ongoing study examining how beta burst features differ between 
+              adults who stutter and fluent speakers during speech preparation and execution.
+            </p>
+            <a href="blog-post3.html" class="read-more-link">Continue Reading →</a>
+          </div>
+          
+          <div class="blog-post-tags">
+            <a href="#">#conference</a>
+            <a href="#">#presentation</a>
+            <a href="#">#networking</a>
+            <a href="#">#berlin</a>
+          </div>
+          
+          <div class="blog-post-actions">
+            <div class="social-share">
+              <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <a href="#" class="prev"><i class="fas fa-chevron-left"></i> Previous</a>
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#" class="next">Next <i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="blog-sidebar">
+        <!-- Search Widget -->
+        <div class="sidebar-widget">
+          <h3>Search</h3>
+          <form class="search-form">
+            <input type="text" placeholder="Search blog posts...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        
+        <!-- Categories Widget -->
+        <div class="sidebar-widget">
+          <h3>Categories</h3>
+          <ul>
+            <li><a href="#">Research Updates <span class="category-count">8</span></a></li>
+            <li><a href="#">Research Methods <span class="category-count">5</span></a></li>
+            <li><a href="#">Lab News <span class="category-count">4</span></a></li>
+            <li><a href="#">Conferences <span class="category-count">3</span></a></li>
+            <li><a href="#">Student Spotlight <span class="category-count">3</span></a></li>
+            <li><a href="#">Publications <span class="category-count">2</span></a></li>
+          </ul>
+        </div>
+        
+        <!-- Recent Posts Widget -->
+        <div class="sidebar-widget">
+          <h3>Recent Posts</h3>
+          <div class="recent-post">
+            <img src="neurofeedback-post-small.jpg" alt="Neurofeedback Post" class="recent-post-image">
+            <div class="recent-post-info">
+              <h4><a href="blog-post1.html">Neurofeedback for Stuttering: Current Progress</a></h4>
+              <span class="recent-post-date">May 19, 2025</span>
+            </div>
+          </div>
+          <div class="recent-post">
+            <img src="beta-burst-post-small.jpg" alt="Beta Burst Post" class="recent-post-image">
+            <div class="recent-post-info">
+              <h4><a href="blog-post2.html">Beta Burst Analysis: A New Approach</a></h4>
+              <span class="recent-post-date">April 28, 2025</span>
+            </div>
+          </div>
+          <div class="recent-post">
+            <img src="conference-post-small.jpg" alt="Conference Post" class="recent-post-image">
+            <div class="recent-post-info">
+              <h4><a href="blog-post3.html">Conference Recap: International Conference</a></h4>
+              <span class="recent-post-date">April 15, 2025</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tags Widget -->
+        <div class="sidebar-widget">
+          <h3>Tags</h3>
+          <div class="tag-cloud">
+            <a href="#">#neurofeedback</a>
+            <a href="#">#eeg</a>
+            <a href="#">#stuttering</a>
+            <a href="#">#beta-bursts</a>
+            <a href="#">#oscillations</a>
+            <a href="#">#speech-motor-control</a>
+            <a href="#">#research</a>
+            <a href="#">#conference</a>
+            <a href="#">#clinical-research</a>
+            <a href="#">#technology</a>
+            <a href="#">#methods</a>
+            <a href="#">#publications</a>
+            <a href="#">#students</a>
+          </div>
+        </div>
+        
+        <!-- Archives Widget -->
+        <div class="sidebar-widget">
+          <h3>Archives</h3>
+          <ul>
+            <li><a href="#">May 2025 <span class="category-count">1</span></a></li>
+            <li><a href="#">April 2025 <span class="category-count">5</span></a></li>
+            <li><a href="#">March 2025 <span class="category-count">3</span></a></li>
+            <li><a href="#">February 2025 <span class="category-count">4</span></a></li>
+            <li><a href="#">January 2025 <span class="category-count">2</span></a></li>
+            <li><a href="#">2024 <span class="category-count">12</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><i class="fas fa-envelope"></i> albowers@uark.edu</p>
+          <p><i class="fas fa-map-marker-alt"></i> Department of Communication Disorders and Occupational Therapy<br>University of Arkansas<br>Fayetteville, AR, 72701</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="cv.html">CV</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-icons">
+            <a href="https://scholar.google.com/citations?user=O1ppuAUAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://www.linkedin.com/in/andrew-bowers-09b8ab366/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/albowers" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/AndrewBowe20526" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="mailto:albowers@uark.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024 Andrew Bowers. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
