@@ -1,0 +1,335 @@
+---
+layout: default
+title: "Blog"
+---
+
+<div class="blog-container">
+  <div class="blog-main">
+    <h2 class="blog-main-heading">The ENL blog: news and discussions</h2>
+    <p style="font-size:1.1rem; color:#b22222; margin-bottom:2.2rem;">
+      <strong>Note:</strong> This page is under construction. Dynamic features (search, filtering, comments, and more) are coming soon!
+    </p>
+    {% for post in site.posts %}
+    <article class="blog-post">
+      <header class="blog-post-header">
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <div class="blog-post-meta">
+          <span><i class="fas fa-user"></i> {{ post.author }}</span>
+          <span><i class="fas fa-calendar"></i> {{ post.date | date: '%B %d, %Y' }}</span>
+          <span><i class="fas fa-folder"></i> {{ post.category }}</span>
+        </div>
+      </header>
+      <div class="blog-post-content">
+        <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+        <a href="{{ post.url }}" class="read-more-link">Continue Reading →</a>
+      </div>
+      <div class="blog-post-tags">
+        {% for tag in post.tags %}
+          <a href="#">#{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <aside class="blog-sidebar">
+    <div class="sidebar-widget">
+      <h3>Search Blog</h3>
+      <div class="search-form">
+        <input type="text" id="search-input" placeholder="Search posts...">
+        <button type="button"><i class="fas fa-search"></i></button>
+      </div>
+      <div id="results-container"></div>
+    </div>
+    <!-- You can add more sidebar widgets below -->
+  </aside>
+</div>
+<!-- Simple Jekyll Search JS -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: 'search.json',
+    searchResultTemplate: '<div class="search-result"><a href="{url}">{title}</a></div>',
+    noResultsText: 'No results found',
+    limit: 10,
+    fuzzy: false
+  });
+</script>
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .blog-post-tags a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .blog-post-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem 1.5rem;
+      border-top: 1px solid #f0f0f0;
+    }
+    .blog-post-actions .social-share {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .blog-post-actions .social-share a {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    .blog-post-actions .social-share a:hover {
+      color: var(--secondary-color);
+    }
+    .read-more-link {
+      color: var(--secondary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .read-more-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar Styles */
+    .blog-sidebar {
+      flex: 0 0 300px;
+    }
+    .sidebar-widget {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar-widget h3 {
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1.3rem;
+    }
+    .sidebar-widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-widget ul li {
+      margin-bottom: 0.8rem;
+    }
+    .sidebar-widget ul li:last-child {
+      margin-bottom: 0;
+    }
+    .sidebar-widget ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    .sidebar-widget ul li a:hover {
+      color: var(--secondary-color);
+    }
+    .sidebar-widget .category-count {
+      background-color: var(--bg-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-left: 0.5rem;
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag-cloud a {
+      display: inline-block;
+      background-color: #f0f5fa;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .tag-cloud a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .recent-post {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .recent-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .recent-post-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    .recent-post-info h4 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .recent-post-info h4 a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .recent-post-info h4 a:hover {
+      color: var(--secondary-color);
+    }
+    .recent-post-date {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .pagination a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin: 0 0.3rem;
+      border-radius: 5px;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .pagination a:hover {
+      background-color: var(--bg-light);
+    }
+    .pagination a.active {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .pagination a.prev, .pagination a.next {
+      width: auto;
+      padding: 0 1rem;
+    }
+
+    /* Search Form */
+    .search-form {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .search-form input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-light);
+      font-family: var(--font-sans);
+    }
+    .search-form button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+    .search-form button:hover {
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 900px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+      .blog-post-featured-image {
+        height: 250px;
+      }
+      .lab-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="links.html">Links</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main>
+    <div class="blog-container">
+      <div class="blog-main">
+        <h2 class="blog-main-heading">The ENL blog: news and discussions</h2>
+        <p style="font-size:1.1rem; color:#b22222; margin-bottom:2.2rem;">
+          <strong>Note:</strong> This page is under construction. Dynamic features (search, filtering, comments, and more) are coming soon!
+        </p>
+        
+        <!-- Blog Post 1 -->
+        {% for post in site.posts %}
+        <article class="blog-post">
+          <header class="blog-post-header">
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <div class="blog-post-meta">
+              <span><i class="fas fa-user"></i> {{ post.author }}</span>
+              <span><i class="fas fa-calendar"></i> {{ post.date | date: '%B %d, %Y' }}</span>
+              <span><i class="fas fa-folder"></i> {{ post.category }}</span>
+            </div>
+          </header>
+          <div class="blog-post-content">
+            <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+            <a href="{{ post.url }}" class="read-more-link">Continue Reading →</a>
+          </div>
+          <div class="blog-post-tags">
+            {% for tag in post.tags %}
+              <a href="#">#{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <aside class="blog-sidebar">
+        <div class="sidebar-widget">
+          <h3>Search Blog</h3>
+          <div class="search-form">
+            <input type="text" id="search-input" placeholder="Search posts...">
+            <button type="button"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="results-container"></div>
+        </div>
+        <!-- You can add more sidebar widgets below -->
+      </aside>
+    <!-- Simple Jekyll Search JS -->
+    <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <script>
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'search.json',
+        searchResultTemplate: '<div class="search-result"><a href="{url}">{title}</a></div>',
+        // Only show post title and link, no image
+        searchResultTemplate: '<div class="search-result"><a href="{url}">{title}</a></div>',
+        noResultsText: 'No results found',
+        limit: 10,
+        fuzzy: false
+      });
+    </script>
