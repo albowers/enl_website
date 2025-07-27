@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About - EEG Neurofeedback Lab – Andrew Bowers, Ph.D.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+   
+    .lab-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      padding: 1rem 0;
+      background-color: var(--bg-light);
+      margin: 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .blog-container {
+      display: grid;
+      grid-template-columns: 7fr 3fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .blog-main {
+      flex: 1;
+      border-bottom: none !important;
+    }
+    .blog-main > *:not(.blog-main-heading) {
+      border-bottom: none !important;
+    }
+    .blog-post {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+    .blog-post-header {
+      padding: 1.5rem 2rem 1rem;
+      border-bottom: none !important;
+    }
+    .blog-post-header h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.8rem;
+    }
+    .blog-post-header a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .blog-post-content {
+      padding: 1.5rem 2rem 2rem;
+    }
+    .blog-post-content p {
+      margin-bottom: 1.2rem;
+    }
+    .blog-main-heading {
+      text-align: left;
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 1.2rem 0 2.2rem 0; /* Updated margin */
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border-color);
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+    }
+    .blog-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0 2rem 1.5rem;
+    }
+    .blog-post-tags a {
+      display: inline-block;
+      background-color: #f0f5fa;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .blog-post-tags a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .blog-post-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem 1.5rem;
+      border-top: 1px solid #f0f0f0;
+    }
+    .blog-post-actions .social-share {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .blog-post-actions .social-share a {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    .blog-post-actions .social-share a:hover {
+      color: var(--secondary-color);
+    }
+    .read-more-link {
+      color: var(--secondary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .read-more-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Sidebar Styles */
+    .blog-sidebar {
+      flex: 0 0 300px;
+    }
+    .sidebar-widget {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar-widget h3 {
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1.3rem;
+    }
+    .sidebar-widget ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar-widget ul li {
+      margin-bottom: 0.8rem;
+    }
+    .sidebar-widget ul li:last-child {
+      margin-bottom: 0;
+    }
+    .sidebar-widget ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    .sidebar-widget ul li a:hover {
+      color: var(--secondary-color);
+    }
+    .sidebar-widget .category-count {
+      background-color: var(--bg-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-left: 0.5rem;
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tag-cloud a {
+      display: inline-block;
+      background-color: #f0f5fa;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .tag-cloud a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .recent-post {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .recent-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .recent-post-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    .recent-post-info h4 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .recent-post-info h4 a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .recent-post-info h4 a:hover {
+      color: var(--secondary-color);
+    }
+    .recent-post-date {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .pagination a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin: 0 0.3rem;
+      border-radius: 5px;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .pagination a:hover {
+      background-color: var(--bg-light);
+    }
+    .pagination a.active {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .pagination a.prev, .pagination a.next {
+      width: auto;
+      padding: 0 1rem;
+    }
+
+    /* Search Form */
+    .search-form {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .search-form input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-light);
+      font-family: var(--font-sans);
+    }
+    .search-form button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+    .search-form button:hover {
+      color: var(--secondary-color);
+    }
+
+    @media (max-width: 900px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+      .blog-post-featured-image {
+        height: 250px;
+      }
+      .lab-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="links.html">Links</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main>
+    <div class="blog-container">
+      <div class="blog-main">
+        <h2 class="blog-main-heading">The ENL blog: news and discussions</h2>
+        <p style="font-size:1.1rem; color:#b22222; margin-bottom:2.2rem;">
+          <strong>Note:</strong> This page is under construction. Dynamic features (search, filtering, comments, and more) are coming soon!
+        </p>
+        
+        <!-- Blog Post 1 -->
+        <article class="blog-post">
+          <header class="blog-post-header">
+            <h3><a href="blog-post1.html">Savanah Green completes undergraduate honors thesis</a></h3>
+            <div class="blog-post-meta">
+              <img src="Converted File.jpg" alt="Andrew Bowers">
+              <span><i class="fas fa-user"></i> Andrew Bowers</span>
+              <span><i class="fas fa-calendar"></i> May 19, 2025</span>
+              <span><i class="fas fa-comments"></i> 5 Comments</span>
+              <span><i class="fas fa-folder"></i> Student Highlights</span>
+            </div>
+          </header>
+          
+
+          
+          <div class="blog-post-content">
+            <p>
+              We want to congratulate Savanah on the completion of her honors thesis. She collected and helped to analyze data from over 70 respondents to a survey asking questions about what stuttering feels like, how individuals define it, and what fluency feels like. The responses from the survey also led to other graduate student projects, including a master's thesis project developing a questionnaire from the responses. We look forward to everything Savanah will do as she works toward her master's degree in speech-language pathology at the University of Central Arkansas!
+            </p>
+            <p>
+            
+            </p>
+            <a href="blog-post1.html" class="read-more-link">Continue Reading →</a>
+          </div>
+          
+          <div class="blog-post-tags">
+            <a href="#">#neurofeedback</a>
+            <a href="#">#stuttering</a>
+            <a href="#">#clinical-research</a>
+            <a href="#">#eeg</a>
+          </div>
+          
+          <div class="blog-post-actions">
+            <div class="social-share">
+              <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+      </div>
+      <aside class="blog-sidebar">
+        <div class="sidebar-widget">
+          <h3>Search Blog</h3>
+          <div class="search-form">
+            <input type="text" id="search-input" placeholder="Search posts...">
+            <button type="button"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="results-container"></div>
+        </div>
+        <!-- You can add more sidebar widgets below -->
+      </aside>
+    <!-- Simple Jekyll Search JS -->
+    <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <script>
+      SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: 'search.json',
+        searchResultTemplate: '<div class="search-result"><a href="{url}">{title}</a></div>',
+        noResultsText: 'No results found',
+        limit: 10,
+        fuzzy: false
+      });
+    </script>
