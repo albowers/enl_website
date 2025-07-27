@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Blog page styles */
+    .lab-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      padding: 1rem 0;
+      background-color: var(--bg-light);
+      margin: 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .blog-container {
+      display: grid;
+      grid-template-columns: 7fr 3fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .blog-main {
+      flex: 1;
+      border-bottom: none !important;
+    }
+    .blog-main > *:not(.blog-main-heading) {
+      border-bottom: none !important;
+    }
+    .blog-post {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
+    .blog-post-header {
+      padding: 1.5rem 2rem 1rem;
+      border-bottom: none !important;
+    }
+    .blog-post-header h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.8rem;
+    }
+    .blog-post-header a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    .blog-post-content {
+      padding: 1.5rem 2rem 2rem;
+    }
+    .blog-post-content p {
+      margin-bottom: 1.2rem;
+    }
+    .blog-main-heading {
+      text-align: left;
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 1.2rem 0 2.2rem 0;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border-color);
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+    }
+    .blog-post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0 2rem 1.5rem;
+    }
+    .blog-post-tags a {
+      display: inline-block;
+      background-color: #f0f5fa;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+    }
+    .blog-post-tags a:hover {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+    .read-more-link {
+      color: var(--secondary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .read-more-link:hover {
+      text-decoration: underline;
+    }
+    .blog-sidebar {
+      flex: 0 0 300px;
+    }
+    .sidebar-widget {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar-widget h3 {
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1.3rem;
+    }
+    .search-form {
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .search-form input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-light);
+      font-family: var(--font-sans);
+    }
+    .search-form button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+    }
+    .search-form button:hover {
+      color: var(--secondary-color);
+    }
+    @media (max-width: 900px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+      .blog-post-featured-image {
+        height: 250px;
+      }
+      .lab-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="links.html">Links</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    {{ content }}
+  </main>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><i class="fas fa-envelope"></i> albowers@uark.edu</p>
+          <p><i class="fas fa-map-marker-alt"></i> Department of Communication Disorders and Occupational Therapy<br>University of Arkansas<br>Fayetteville, AR, 72701</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="cv.html">CV</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-icons">
+            <a href="https://scholar.google.com/citations?user=O1ppuAUAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://www.linkedin.com/in/andrew-bowers-09b8ab366/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/albowers" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/AndrewBowe20526" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="mailto:albowers@uark.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024 Andrew Bowers. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="/script.js"></script>
+</body>
+</html>
