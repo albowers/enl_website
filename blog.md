@@ -7,7 +7,6 @@ title: "Blog"
   <div class="blog-main">
     <h2 class="blog-main-heading">The ENL blog: news and discussions</h2>
     <p style="font-size:1.1rem; color:#b22222; margin-bottom:2.2rem;">
-      <strong>Note:</strong> This page is under construction. Dynamic features (search, filtering, comments, and more) are coming soon!
     </p>
 
     {% for post in site.posts %}
