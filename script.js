@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
   resultsContainer.className = 'search-results';
   searchInput.parentNode.appendChild(resultsContainer);
 
-  var posts = [];
-  fetch('/search.json')
-    .then(response => response.json())
-    .then(data => { posts = data; });
+var posts = [];
+var baseurl = document.querySelector('body').getAttribute('data-baseurl') || '';
+fetch(baseurl + '/search.json')
+  .then(response => response.json())
+  .then(data => { posts = data; });
 
   searchInput.addEventListener('input', function(e) {
     var query = e.target.value.trim().toLowerCase();
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     matches.forEach(post => {
       var li = document.createElement('li');
       var a = document.createElement('a');
-      a.href = '/' + post.url;
+      a.href = baseurl + post.url;
       a.textContent = post.title;
       li.appendChild(a);
       ul.appendChild(li);
