@@ -1,0 +1,6 @@
+title: EEG Neurofeedback Lab – Andrew Bowers, Ph.D.
+description: ENL blog and research
+baseurl: ""
+url: ""
+permalink: /:title.html
+#theme: minima
