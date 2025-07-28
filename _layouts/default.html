@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
   <style>
     /* Blog page styles */
     .lab-title {
@@ -155,17 +155,17 @@
     }
   </style>
 </head>
-<body>
+<body data-baseurl="{{ site.baseurl }}">
   <nav>
     <div class="container">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="links.html">Links</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+        <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+        <li><a href="{{ site.baseurl }}/publications.html">Publications</a></li>
+        <li><a href="{{ site.baseurl }}/projects.html">Projects</a></li>
+        <li><a href="{{ site.baseurl }}/blog.html">Blog</a></li>
+        <li><a href="{{ site.baseurl }}/links.html">Links</a></li>
+        <li><a href="{{ site.baseurl }}/contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -182,7 +182,7 @@
       {% if page.tags %}
       <div class="post-tags">
         {% for tag in page.tags %}
-          <a href="/tags.html#{{ tag | slugify }}">#{{ tag }}</a>
+          <a href="{{ site.baseurl }}/tags.html#{{ tag | slugify }}">#{{ tag }}</a>
         {% endfor %}
       </div>
       {% endif %}
@@ -241,6 +241,6 @@
       </div>
     </div>
   </footer>
-  <script src="/script.js"></script>
+  <script src="{{ site.baseurl }}/script.js"></script>
 </body>
 </html>
