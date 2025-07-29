@@ -2,8 +2,8 @@
 title: "Syllable repetition study in the news"
 author: Andrew Bowers
 date: 2024-05-01
-categories: [your-category]
-tags: [tag1, tag2]
+categories: [research-highlights]
+tags: [phonological working memory, nonword repetition, eeg]
 layout: default
 ---
 
