@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - EEG Neurofeedback Lab</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
+---
+layout: default
+title: Projects
+---
+<style>
     .why-matters-heading {
       font-size: 1.5rem;
       font-family: var(--font-serif);
@@ -109,13 +104,13 @@
   <nav>
       <div class="container">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="publications.html">Publications</a></li>
-          <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="links.html">Links</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+          <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+          <li><a href="{{ site.baseurl }}/publications.html">Publications</a></li>
+          <li><a href="{{ site.baseurl }}/projects.html" class="active">Projects</a></li>
+          <li><a href="{{ site.baseurl }}/blog.html">Blog</a></li>
+          <li><a href="{{ site.baseurl }}/links.html">Links</a></li>
+          <li><a href="{{ site.baseurl }}/contact.html">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -130,7 +125,7 @@
 </p>
         <!-- Beta Burst Project Section -->
         <div class="research-item beta-burst" id="beta-burst">
-          <img src="burst_waveform.jpg" alt="Beta Burst Dynamics Project" class="project-img-right" onclick="openModal(this)" data-fullsrc="burst_waveform.jpg" style="float:right;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 0 0.7rem 1.1rem;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
+          <img src="{{ site.baseurl }}/burst_waveform.jpg" alt="Beta Burst Dynamics Project" class="project-img-right" onclick="openModal(this)" data-fullsrc="{{ site.baseurl }}/burst_waveform.jpg" style="float:right;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 0 0.7rem 1.1rem;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
           <h3>Beta burst dynamics in speech motor control and stuttering</h3>
           <p>
             Beta bursts are brief increases in oscillatory power in the 15-30 Hz frequency band that occur in sensorimotor 
@@ -221,7 +216,7 @@
         <!-- Event-related phase amplitude coupling -->
         <div class="Phase-amplitude couplint" id="ERPAC" style="margin-top: 3rem;">
           <h3>Event-related phase amplitude coupling in stuttering and speech motor control</h3>
-          <img src="alpha_gamma_delta_beta.png" alt="Alpha Beta Coupling" class="project-img-left" onclick="openModal(this)" data-fullsrc="alpha_gamma_delta_beta.png" style="float:left;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 1.1rem 0.7rem 0;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
+          <img src="{{ site.baseurl }}/alpha_gamma_delta_beta.png" alt="Alpha Beta Coupling" class="project-img-left" onclick="openModal(this)" data-fullsrc="{{ site.baseurl }}/alpha_gamma_delta_beta.png" style="float:left;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 1.1rem 0.7rem 0;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
           <p>
             This project explores how transient links between the phase of lower frequency alpha rhythms (e.g., ~8-13Hz) and higher frequency beta power (~15-30Hz) might differ in adults who stutter compared to typically fluent speakers. While beta bursts are related to inhibition and disinhibition, measures of alpha-beta phase amplitude coupling are thought to index sensorimotor precision. The goal of this project is to determine whether measures of alpha-beta phase amplitude coupling relate to the ongoing phases of a speaking task from preparation to speak to execution. A second goal of the project is to determine whether the measure relates to stuttering behaviors (stuttered trials) and self-reported measures of functional impact (OASES scores). A final goal of the project is to identify at what alpha phase differences in alpha-beta phase amplitude coupling occur.
             <br><br>
@@ -239,7 +234,7 @@
         <div class="project-section" id="phonological-working-memory" style="margin-top: 3rem;">
           <h3>Phonological Working Memory in stuttering</h3>
           <div style="overflow: hidden;">
-            <img src="phono_mem.jpg" alt="Phonological Working Memory in stuttering" class="project-img-right" onclick="openModal(this)" data-fullsrc="phono_mem.jpg" style="float:right;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 0 0.7rem 1.1rem;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
+            <img src="{{ site.baseurl }}/phono_mem.jpg" alt="Phonological Working Memory in stuttering" class="project-img-right" onclick="openModal(this)" data-fullsrc="{{ site.baseurl }}/phono_mem.jpg" style="float:right;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 0 0.7rem 1.1rem;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
             <p style="overflow:visible;">
               Phonological working memory refers to the ability to temporarily store and manipulate speech sounds, which is one process that could be related to stuttering. For example, children who are considered to recover from stuttering tend to have slightly better performance on measures of phonological working memory compared to children who persist. Adults who stutter also seem to present with differences in tasks heavily loading phonological working memory. Still, findings have been mixed and it's unclear what process might underlie lower behavioral performance, how differences are related to speech/language production, and how differences might be related to stuttering in any functional way. We've proposed that differences in the sensorimotor control system as part of a larger neurobiology of language could be related to these differences (see Bowers et al., 2018) and we've also found some correlates that are consistent with multiple cortical rhythms derived from EEG recordings (see Bowers et al., 2024). We've proposed that short-term memory for nonword sequences may load speech sensorimotor motor and auditory-sensory processes that also lead to stuttering behaviors in more naturalistic speech production. So, we've suggested that some nonword tasks may act as a kind of stress test. What we still don't know is how it all fits together. Brain rhythms, even when they can be isolated from other rhythms, seem to multiplex and different frequencies have different functional roles. The ongoing goal of this project is to investigate how both intrinsic (i.e., in the resting state) and task-related brain responses at multiple frequencies (e.g., theta, beta, and alpha) relate those measures to behavior. The Figure (click to enlarge) shows strong correlations between stuttering and syllable repetition performance at the boundary between theta and alpha oscillatory bands in sensorimotor and temporal lobe EEG components.
             </p>
@@ -257,7 +252,7 @@
         <div class="project-section" id="interoceptive-awareness" style="margin-top: 3rem;">
           <h3>Developing a measure of interoceptive awareness of stuttering</h3>
           <div style="overflow: hidden;">
-            <img src="Sleep.jpeg" alt="Developing a measure of interoceptive awareness of stuttering" class="project-img-left" onclick="openModal(this)" data-fullsrc="Sleep.jpeg" style="float:left;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 1.1rem 0.7rem 0;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
+            <img src="{{ site.baseurl }}/Sleep.jpeg" alt="Developing a measure of interoceptive awareness of stuttering" class="project-img-left" onclick="openModal(this)" data-fullsrc="{{ site.baseurl }}/Sleep.jpeg" style="float:left;width:400px;height:280px;max-width:76vw;max-height:280px;margin:0 1.1rem 0.7rem 0;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.07);object-fit:cover;background:none;cursor:pointer;transition:box-shadow 0.2s;display:block;padding:0;">
             <p style="overflow:visible;">
               This project aims to create and validate a new measure for assessing interoceptive awareness in individuals who stutter. A new version of the biopsychosocial model of stuttering proposes that a primary feature of stuttering is a feeling of losing control or a feeling that you are not able to execute speech and language as intended.  Interoceptive awareness refers to the ability to perceive internal bodily sensations and monitor them to inform action. For that reason, the concept of interoceptive awareness adapted to stuttering could give us a measure of this internal process that wouldn't be obvious in counts of stuttering from an outside listener's perspective. The project will involve designing assessment tools, collecting data, and analyzing the relationship between interoceptive awareness and stuttering behaviors. The figure (click to enlarge) shows multiple physiological signals that could be related to a sensation of stuttering and could offer a way to learn how those signals contribute to an internal awareness of stuttering.
             </p>
@@ -286,10 +281,10 @@
         <div class="footer-section">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="cv.html">CV</a></li>
+            <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+            <li><a href="{{ site.baseurl }}/about.html">About</a></li>
+            <li><a href="{{ site.baseurl }}/publications.html">Publications</a></li>
+            <li><a href="{{ site.baseurl }}/cv.html">CV</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -309,6 +304,7 @@
     </div>
   </footer>
 
+  <script src="{{ site.baseurl }}/script.js"></script>
   <script>
 // Define utility functions outside any other function scope
 function createSVG(containerClass, svgId) {
