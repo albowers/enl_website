@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ENL — Beta Power Animation</title>
+  <style>
+    :root { --primary-color: #1d3557; --secondary-color: #457b9d; }
+    html,body { margin:0; padding:0; }
+    body { font-family:"Open Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; color:#222; padding:12px 16px 24px; background:#fff; }
+    h4 { font-family:"Lora",Georgia,serif; color:var(--primary-color); }
+    .btn { font-family:inherit; }
+  </style>
+</head>
+<body>
+<div class="eeg-visualization-container" style="margin: 2.5rem 0; padding: 1.5rem; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+  <h4>Beta Power Dynamics: AWS vs. Controls</h4>
+  <p class="visualization-description" style="font-style: italic; margin-bottom: 1.5rem; color: #555;">
+    Time-frequency analysis of beta power during quiet and imagined speech conditions in adults who stutter (AWS) vs. fluent controls (CON). Both groups show a decrease in beta power, with AWS showing a larger magnitude change.
+  </p>
+  <div class="eeg-grid" style="display: grid; grid-template-columns: 80px repeat(2, 1fr); grid-template-rows: 40px auto; gap: 20px;">
+    <!-- Column Headers -->
+    <div style="grid-row: 1; grid-column: 2; text-align: center; font-weight: 600; font-size: 18px;">Quiet</div>
+    <div style="grid-row: 1; grid-column: 3; text-align: center; font-weight: 600; font-size: 18px;">IM</div>
+    
+    <!-- Beta Row -->
+    <div style="grid-row: 2; grid-column: 1; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold;">Î² Power</div>
+    <div class="chart-container quiet-beta-container" style="grid-row: 2; grid-column: 2; position: relative; height: 200px; background-color: white; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;"></div>
+    <div class="chart-container im-beta-container" style="grid-row: 2; grid-column: 3; position: relative; height: 200px; background-color: white; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;"></div>
+  </div>
+  
+  <div class="legend" style="display: flex; justify-content: center; gap: 30px; margin: 20px 0;">
+    <div class="legend-item aws" style="display: flex; align-items: center; gap: 8px; font-weight: 500;">
+      <span style="width: 20px; height: 3px; background-color: #e63946; box-shadow: 0 -4px 0 rgba(230,57,70,0.2), 0 4px 0 rgba(230,57,70,0.2);"></span>
+      <span>AWS</span>
+    </div>
+    <div class="legend-item con" style="display: flex; align-items: center; gap: 8px; font-weight: 500;">
+      <span style="width: 20px; height: 3px; background-color: #1d3557; box-shadow: 0 -4px 0 rgba(29,53,87,0.2), 0 4px 0 rgba(29,53,87,0.2);"></span>
+      <span>CON</span>
+    </div>
+  </div>
+  
+  <button id="animate-beta-power-button" class="btn" onclick="this.disabled=true; animateBetaPowerVisualization(); setTimeout(() => this.disabled=false, 8000); return false;" style="display: block; margin: 0 auto; padding: 12px 30px; background-color: var(--primary-color); color: white; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; position: relative; z-index: 9999; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">Animate Beta Power</button>
+</div>
+
+<script>
+function createBetaPowerVisualization(containerClass, svgId) {
+  const container = document.querySelector('.' + containerClass);
+  if (!container) {
+    console.error('Container not found:', containerClass);
+    return null;
+  }
+  
+  // Clear any existing SVGs
+  const existingSvg = document.getElementById(svgId);
+  if (existingSvg) {
+    existingSvg.remove();
+  }
+  
+  // Create SVG with padding for labels - INCREASED HEIGHT
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.id = svgId;
+  svg.setAttribute('class', 'power-chart');
+  svg.setAttribute('viewBox', '0 0 400 240'); // MORE height for label space
+  svg.style.width = '100%';
+  svg.style.height = '100%';
+  svg.style.position = 'absolute';
+  container.appendChild(svg);
+  
+  // Define constants for better spacing
+  const leftMargin = 40;
+  const rightMargin = 10;
+  const topMargin = 20;
+  const bottomMargin = 50; // INCREASED bottom margin for labels
+  const chartWidth = 400 - leftMargin - rightMargin;
+  const chartHeight = 180 - topMargin - bottomMargin;
+  
+  // Add horizontal grid lines and labels for percentages
+  const percentages = [50, 25, 0, -25, -50];
+  const yPositions = [40, 80, 120, 160, 200];
+  
+  for (let i = 0; i < percentages.length; i++) {
+    // Grid line with proper left margin
+    const gridLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    gridLine.setAttribute('x1', leftMargin.toString());
+    gridLine.setAttribute('y1', yPositions[i].toString());
+    gridLine.setAttribute('x2', '390');
+    gridLine.setAttribute('y2', yPositions[i].toString());
+    gridLine.setAttribute('stroke', '#ddd');
+    gridLine.setAttribute('stroke-width', '1');
+    gridLine.setAttribute('stroke-dasharray', '4 4');
+    svg.appendChild(gridLine);
+    
+    // Percentage label
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', (leftMargin - 5).toString());
+    label.setAttribute('y', (yPositions[i] + 5).toString());
+    label.setAttribute('fill', '#666');
+    label.setAttribute('font-size', '12px');
+    label.setAttribute('text-anchor', 'end');
+    label.textContent = percentages[i] + '%';
+    svg.appendChild(label);
+  }
+  
+// Add vertical time markers - keep labels but only show line at zero
+const timeMarkerPositions = [leftMargin + chartWidth * 0.25, leftMargin + chartWidth * 0.5, leftMargin + chartWidth * 0.75];
+const timeMarkerLabels = ["-3500", "-2000", "0"];
+
+// Add time labels for all positions
+timeMarkerPositions.forEach((x, i) => {
+  const timeLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  timeLabel.setAttribute('x', x.toString());
+  timeLabel.setAttribute('y', '205'); // Moved down for better spacing
+  timeLabel.setAttribute('fill', '#666');
+  timeLabel.setAttribute('font-size', '11px');
+  timeLabel.setAttribute('text-anchor', 'middle');
+  timeLabel.textContent = timeMarkerLabels[i];
+  svg.appendChild(timeLabel);
+});
+
+// Add vertical line ONLY for the zero point (last position)
+const zeroPosition = timeMarkerPositions[timeMarkerPositions.length - 1];
+const timeLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+timeLine.setAttribute('x1', zeroPosition.toString());
+timeLine.setAttribute('y1', topMargin.toString());
+timeLine.setAttribute('x2', zeroPosition.toString());
+timeLine.setAttribute('y2', (200 - bottomMargin).toString());
+timeLine.setAttribute('stroke', '#888');
+timeLine.setAttribute('stroke-width', '1');
+svg.appendChild(timeLine);
+  
+  // Add title and axis labels with better positioning
+  const xAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  xAxisLabel.setAttribute('x', '200'); // Center of chart
+  xAxisLabel.setAttribute('y', '230'); // MOVED DOWN further below time markers
+  xAxisLabel.setAttribute('text-anchor', 'middle');
+  xAxisLabel.setAttribute('font-size', '14px');
+  xAxisLabel.setAttribute('fill', '#333');
+  xAxisLabel.textContent = 'Time relative to speech onset (ms)';
+  svg.appendChild(xAxisLabel);
+
+  // Add y-axis label for power animation only
+  const powerYAxisLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  powerYAxisLabel.setAttribute('x', '0'); // Adjust as needed for spacing
+  powerYAxisLabel.setAttribute('y', '120'); // Vertically centered in chart
+  powerYAxisLabel.setAttribute('text-anchor', 'middle');
+  powerYAxisLabel.setAttribute('font-size', '14px');
+  powerYAxisLabel.setAttribute('fill', '#333');
+  powerYAxisLabel.setAttribute('transform', 'rotate(-90 0,120)'); // Rotate to vertical
+  powerYAxisLabel.textContent = '% Change';
+  svg.appendChild(powerYAxisLabel);
+  
+  
+  return svg;
+}
+
+function initializeBetaPowerVisualization(svgId, chartData) {
+  const svg = document.getElementById(svgId);
+  if (!svg) {
+    console.error('SVG not found:', svgId);
+    return;
+  }
+  
+  // 1. Create and add the AWS line (with increased stroke width for better visibility)
+  const awsLine = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  awsLine.setAttribute('d', chartData.aws.line);
+  awsLine.setAttribute('stroke', '#e63946');
+  awsLine.setAttribute('stroke-width', '3');
+  awsLine.setAttribute('fill', 'none');
+  awsLine.classList.add('aws-power-line');
+  awsLine.style.strokeDasharray = '1000';
+  awsLine.style.strokeDashoffset = '1000';
+  svg.appendChild(awsLine);
+  
+  // 2. Create and add the CON line
+  const conLine = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  conLine.setAttribute('d', chartData.con.line);
+  conLine.setAttribute('stroke', '#1d3557');
+  conLine.setAttribute('stroke-width', '3');
+  conLine.setAttribute('fill', 'none');
+  conLine.classList.add('con-power-line');
+  conLine.style.strokeDasharray = '1000';
+  conLine.style.strokeDashoffset = '1000';
+  svg.appendChild(conLine);
+}
+
+function getBetaPowerData() {
+  // Define constants for proper positioning
+  const leftMargin = 40;
+  const chartWidth = 340;
+  
+  return {
+    quiet: {
+      aws: {
+        // Line path for AWS showing a stronger decrease that maintains through zero
+        line: `M${leftMargin},120 C${leftMargin+30},122 ${leftMargin+60},128 ${leftMargin+90},135 
+               C${leftMargin+120},145 ${leftMargin+150},158 ${leftMargin+180},168
+               C${leftMargin+210},175 ${leftMargin+240},178 ${leftMargin+270},178 
+               C${leftMargin+300},178 ${leftMargin+330},175 ${leftMargin+350},175`
+      },
+      con: {
+        // Line path for CON showing a milder decrease that maintains through zero
+        line: `M${leftMargin},120 C${leftMargin+30},121 ${leftMargin+60},123 ${leftMargin+90},127
+               C${leftMargin+120},133 ${leftMargin+150},140 ${leftMargin+180},145
+               C${leftMargin+210},148 ${leftMargin+240},150 ${leftMargin+270},150
+               C${leftMargin+300},150 ${leftMargin+330},148 ${leftMargin+350},148`
+      }
+    },
+    im: {
+      aws: {
+        // Line path for AWS showing an even stronger decrease that maintains through zero
+        line: `M${leftMargin},120 C${leftMargin+30},123 ${leftMargin+60},130 ${leftMargin+90},140
+               C${leftMargin+120},155 ${leftMargin+150},165 ${leftMargin+180},175
+               C${leftMargin+210},180 ${leftMargin+240},182 ${leftMargin+270},182
+               C${leftMargin+300},182 ${leftMargin+330},180 ${leftMargin+350},180`
+      },
+      con: {
+        // Line path for CON showing a moderate decrease that maintains through zero
+        line: `M${leftMargin},120 C${leftMargin+30},122 ${leftMargin+60},125 ${leftMargin+90},130
+               C${leftMargin+120},138 ${leftMargin+150},145 ${leftMargin+180},152
+               C${leftMargin+210},155 ${leftMargin+240},156 ${leftMargin+270},156
+               C${leftMargin+300},155 ${leftMargin+330},155 ${leftMargin+350},155`
+      }
+    }
+  };
+}
+
+window.animateBetaPowerVisualization = function() {
+  console.log('Animating beta power visualization...');
+  
+  // Create and initialize SVGs if they don't exist
+  if (!document.getElementById('quiet-beta')) {
+    const quietSvg = createBetaPowerVisualization('quiet-beta-container', 'quiet-beta');
+    if (quietSvg) {
+      initializeBetaPowerVisualization('quiet-beta', getBetaPowerData().quiet);
+    }
+  }
+  
+  if (!document.getElementById('im-beta')) {
+    const imSvg = createBetaPowerVisualization('im-beta-container', 'im-beta');
+    if (imSvg) {
+      initializeBetaPowerVisualization('im-beta', getBetaPowerData().im);
+    }
+  }
+  
+  // Animate lines with slower progression and better easing
+  const lines = document.querySelectorAll('.aws-power-line, .con-power-line');
+  lines.forEach((line, index) => {
+    // Reset animation state
+    line.style.strokeDashoffset = '1000';
+    void line.offsetWidth; // Force reflow
+    
+    // Stagger the animation start for AWS vs CON lines
+    const delay = index * 600; // 600ms delay between AWS and CON lines
+    
+    // Slower, more dramatic animation with better easing
+    setTimeout(() => {
+      line.style.transition = 'stroke-dashoffset 6.5s cubic-bezier(0.3, 0, 0.3, 1)';
+      line.style.strokeDashoffset = '0';
+    }, delay);
+    
+    // Add points along the line that appear progressively
+    if (line.classList.contains('aws-power-line')) {
+      addProgressivePoints(line, '#e63946', delay + 500, 8);
+    } else {
+      addProgressivePoints(line, '#1d3557', delay + 500, 8);
+    }
+  });
+  
+  return false;
+};
+
+function addProgressivePoints(line, color, startDelay, numPoints) {
+  const svg = line.ownerSVGElement;
+  if (!svg) return;
+  
+  // Get path length to distribute points evenly
+  const pathLength = line.getTotalLength();
+  
+  for (let i = 0; i < numPoints; i++) {
+    const point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const position = line.getPointAtLength(pathLength * (i / (numPoints - 1)));
+    
+    point.setAttribute('cx', position.x);
+    point.setAttribute('cy', position.y);
+    point.setAttribute('r', '3');
+    point.setAttribute('fill', color);
+    point.setAttribute('stroke', 'white');
+    point.setAttribute('stroke-width', '1');
+    point.classList.add('power-point');
+    point.style.opacity = '0';
+    
+    svg.appendChild(point);
+    
+    // Animate point appearance with staggered timing
+    setTimeout(() => {
+      point.style.transition = 'opacity 0.5s ease-in-out';
+      point.style.opacity = '1';
+    }, startDelay + (i * 500)); // 500ms between points
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  createBetaPowerVisualization('quiet-beta-container', 'quiet-beta');
+  initializeBetaPowerVisualization('quiet-beta', getBetaPowerData().quiet);
+  createBetaPowerVisualization('im-beta-container', 'im-beta');
+  initializeBetaPowerVisualization('im-beta', getBetaPowerData().im);
+  var betaBtn = document.getElementById('animate-beta-power-button');
+  if (betaBtn) {
+    betaBtn.onclick = function() {
+      this.disabled = true;
+      animateBetaPowerVisualization();
+      setTimeout(() => { this.disabled = false; }, 8000);
+      return false;
+    };
+  }
+});
+</script>
+</body>
+</html>
